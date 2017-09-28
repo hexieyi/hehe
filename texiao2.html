@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>特效2</title>
+	<style>
+		*{ margin:0; padding:0; }
+		body{ background:#000;}
+
+		#wrap{
+			width:1250px;
+			height:100px;
+			margin:0 auto;
+			margin-top:100px;
+		}
+		.a{ 
+			font-size:80px; 
+			float:left; 
+			display:none; 
+		}
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div class="a">不</div>
+		<div class="a">要</div>
+		<div class="a">迷</div>
+		<div class="a">恋</div>
+		<div class="a">哥</div>
+		<div class="a">，</div>
+		<div class="a">哥</div>
+		<div class="a">只</div>
+		<div class="a">是</div>
+		<div class="a">一</div>
+		<div class="a">个</div>
+		<div class="a">传</div>
+		<div class="a">说</div>
+		<div class="a">！</div>
+		<div class="a">哈</div>
+		<div class="a">哈</div>
+		
+	</div>
+</body>
+	<script src="./jquery.min.js"></script>
+	<script>
+
+		// 获取元素
+		$('#wrap .a:eq(0)').show(500,function myshow(){
+				// 递归调用
+				$(this).next().show(500,myshow);
+		});
+
+		setInterval(function(){
+			$('#wrap .a').each(function(index,item){
+			
+				changeBg($('#wrap .a').eq(index));
+			});
+		
+		},800);
+
+		// 定义获取m,n之间随机整数的函数
+		function rand(m,n){
+			return Math.floor(Math.random()*(n-m+1))+m;
+		}
+
+		// 定义改变元素背景颜色的函数
+		function changeBg(obj){
+
+			obj.css({color:'rgb('+rand(0,255)+','+rand(0,255)+','+rand(0,255)+')'});
+		}
+	</script>
+</html>
